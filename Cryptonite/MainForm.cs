@@ -20,22 +20,11 @@ namespace Cryptonite
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void encryptButton_Click(object sender, EventArgs e)
         {
             if (!IsFormValid()) return;
             
             outputBox.Text = Crypto.Encrypt(inputBox.Text, cryptKeyBox.Text, true);
-        }
-
-        private bool IsFormValid()
-        {
-            return !String.IsNullOrEmpty(cryptKeyBox.Text) &&
-                   !String.IsNullOrEmpty(inputBox.Text);
         }
 
         private void decryptButton_Click(object sender, EventArgs e)
@@ -55,6 +44,16 @@ namespace Cryptonite
                 return;
             }
             outputBox.Text = Crypto.Decrypt(inputEncrypted, cryptKeyBox.Text, true);
+        }
+
+        /// <summary>
+        /// Form validation to check if required fields have input.
+        /// </summary>
+        /// <returns>bool if required fields have input</returns>
+        private bool IsFormValid()
+        {
+            return !String.IsNullOrEmpty(cryptKeyBox.Text) &&
+                   !String.IsNullOrEmpty(inputBox.Text);
         }
 
         /// <summary>
